@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHMS — Smart Hospital Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">✚</div><div><strong>SHMS</strong><span>Smart Hospital</span></div></div>
+      <div class="role-pill">ADMIN <span>●</span></div>
+      <nav>
+        <a class="active" href="#dashboard">▦ <span>Dashboard</span></a>
+        <a href="#patients">♙ <span>Patients</span></a>
+        <a href="#appointments">◷ <span>Appointments</span></a>
+        <a href="#doctors">♙ <span>Doctors</span></a>
+        <a href="#prescriptions">▤ <span>Prescriptions</span></a>
+        <a href="#billing">₹ <span>Billing</span></a>
+        <a href="#inventory">▥ <span>Medicine Inventory</span></a>
+      </nav>
+      <div class="sidebar-bottom"><a href="#settings">⚙ <span>Settings</span></a><a href="#logout">↪ <span>Logout</span></a></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><div class="eyebrow">WEDNESDAY · 09 SEPTEMBER 2026</div><h1 id="pageTitle">Hospital Overview</h1></div>
+        <div class="top-actions"><button class="icon-btn">⌕</button><button class="icon-btn">♧<b class="dot"></b></button><div class="profile"><div class="avatar">AD</div><div><strong>Admin</strong><small>Administrator</small></div><span>⌄</span></div></div>
+      </header>
+
+      <section id="dashboard" class="page-section">
+        <div class="hero"><div><span class="badge">LIVE OPERATIONS</span><h2>Good morning, Admin.</h2><p>Monitor hospital activity, prioritize care, and keep every department synchronized.</p></div><button class="primary" onclick="openModal('appointmentModal')">＋ New Appointment</button></div>
+
+        <div class="stat-grid">
+          <article class="stat-card"><div class="stat-icon blue">♙</div><div><span>Registered Patients</span><strong>1,284</strong><small class="up">↗ 8.4% <em>vs last month</em></small></div></article>
+          <article class="stat-card"><div class="stat-icon purple">◷</div><div><span>Today's Appointments</span><strong>42</strong><small class="up">↗ 12.1% <em>vs yesterday</em></small></div></article>
+          <article class="stat-card"><div class="stat-icon green">✓</div><div><span>Doctors Available</span><strong>18 <small>/ 24</small></strong><small class="neutral">● 75% on duty</small></div></article>
+          <article class="stat-card"><div class="stat-icon orange">▥</div><div><span>Low Stock Medicines</span><strong>07</strong><small class="warn">⚠ Needs attention</small></div></article>
+        </div>
+
+        <div class="content-grid">
+          <section class="panel priority">
+            <div class="panel-head"><div><h3>Smart Appointment Queue</h3><p>Severity-based prioritization · Strategy Engine</p></div><button class="ghost" onclick="showToast('Queue refreshed')">↻ Refresh</button></div>
+            <div class="queue">
+              <div class="queue-row emergency"><span class="rank">01</span><div class="patient-avatar red">RK</div><div class="patient-info"><strong>Rahul Kumar</strong><span>Chest pain · Emergency</span></div><span class="score">98 <small>URGENT</small></span><button onclick="showToast('Rahul Kumar selected')">View</button></div>
+              <div class="queue-row critical"><span class="rank">02</span><div class="patient-avatar amber">AS</div><div class="patient-info"><strong>Anjali S.</strong><span>Diabetes follow-up · Chronic</span></div><span class="score">72 <small>HIGH</small></span><button onclick="showToast('Anjali S. selected')">View</button></div>
+              <div class="queue-row routine"><span class="rank">03</span><div class="patient-avatar blue">MN</div><div class="patient-info"><strong>Mohammed N.</strong><span>General consultation · Routine</span></div><span class="score">35 <small>NORMAL</small></span><button onclick="showToast('Mohammed N. selected')">View</button></div>
+              <div class="queue-row routine"><span class="rank">04</span><div class="patient-avatar green">PS</div><div class="patient-info"><strong>Priya S.</strong><span>Review · Routine</span></div><span class="score">28 <small>NORMAL</small></span><button onclick="showToast('Priya S. selected')">View</button></div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head"><div><h3>Department Snapshot</h3><p>Current workload</p></div></div>
+            <div class="bars">
+              <div><span>Cardiology</span><b>86%</b><i><em style="width:86%"></em></i></div>
+              <div><span>General Medicine</span><b>71%</b><i><em style="width:71%"></em></i></div>
+              <div><span>Orthopedics</span><b>58%</b><i><em style="width:58%"></em></i></div>
+              <div><span>Pediatrics</span><b>44%</b><i><em style="width:44%"></em></i></div>
+              <div><span>Dermatology</span><b>32%</b><i><em style="width:32%"></em></i></div>
+            </div>
+          </section>
+        </div>
+
+        <section class="panel table-panel">
+          <div class="panel-head"><div><h3>Today's Schedule</h3><p>Priority-ranked appointments and doctor assignments</p></div><button class="ghost">View all →</button></div>
+          <div class="table-wrap"><table><thead><tr><th>Patient</th><th>Doctor</th><th>Time</th><th>Priority</th><th>Status</th><th></th></tr></thead>
+          <tbody>
+            <tr><td><strong>Rahul Kumar</strong><small>PT-10284</small></td><td>Dr. Arjun Menon<small>Cardiology</small></td><td>10:15 AM</td><td><span class="tag danger">Emergency · 98</span></td><td><span class="status waiting">Waiting</span></td><td>•••</td></tr>
+            <tr><td><strong>Anjali S.</strong><small>PT-10279</small></td><td>Dr. Meera Nair<small>General Medicine</small></td><td>10:30 AM</td><td><span class="tag warning">Chronic · 72</span></td><td><span class="status confirmed">Confirmed</span></td><td>•••</td></tr>
+            <tr><td><strong>Mohammed N.</strong><small>PT-10266</small></td><td>Dr. Vishnu P.<small>General Medicine</small></td><td>11:00 AM</td><td><span class="tag info">Routine · 35</span></td><td><span class="status confirmed">Confirmed</span></td><td>•••</td></tr>
+          </tbody></table></div>
+        </section>
+      </section>
+
+      <section id="patients" class="page-section hidden"><div class="section-title"><h2>Patients</h2><button class="primary" onclick="openModal('patientModal')">＋ Register Patient</button></div><div class="panel"><div class="searchbar">⌕ <input placeholder="Search patient by name or ID..." oninput="filterRows(this,'patientTable')"></div><div class="table-wrap"><table id="patientTable"><thead><tr><th>Patient</th><th>ID</th><th>Age</th><th>Blood Group</th><th>Last Visit</th><th>Status</th></tr></thead><tbody><tr><td><strong>Rahul Kumar</strong></td><td>PT-10284</td><td>42</td><td>O+</td><td>09 Sep 2026</td><td><span class="status waiting">Active</span></td></tr><tr><td><strong>Anjali S.</strong></td><td>PT-10279</td><td>57</td><td>A+</td><td>07 Sep 2026</td><td><span class="status confirmed">Active</span></td></tr><tr><td><strong>Mohammed N.</strong></td><td>PT-10266</td><td>29</td><td>B+</td><td>01 Sep 2026</td><td><span class="status confirmed">Active</span></td></tr></tbody></table></div></div></section>
+
+      <section id="appointments" class="page-section hidden"><div class="section-title"><h2>Appointments</h2><button class="primary" onclick="openModal('appointmentModal')">＋ New Appointment</button></div><div class="stat-grid mini"><article class="stat-card"><span>Emergency</span><strong>04</strong></article><article class="stat-card"><span>Chronic</span><strong>11</strong></article><article class="stat-card"><span>Routine</span><strong>27</strong></article></div><div class="panel"><h3>Priority Engine</h3><p class="muted">Appointments are scored by severity rules and sorted automatically instead of relying only on first-come-first-served order.</p><div class="formula">Priority Score = Severity × 60 + Chronicity × 25 + Waiting Time × 15</div></div></section>
+
+      <section id="doctors" class="page-section hidden"><div class="section-title"><h2>Doctors</h2><button class="ghost">Manage availability</button></div><div class="doctor-grid"><div class="doctor-card"><div class="patient-avatar blue">AM</div><h3>Dr. Arjun Menon</h3><p>Cardiology</p><span class="online">● Available</span></div><div class="doctor-card"><div class="patient-avatar purple">MN</div><h3>Dr. Meera Nair</h3><p>General Medicine</p><span class="online">● Available</span></div><div class="doctor-card"><div class="patient-avatar green">VP</div><h3>Dr. Vishnu P.</h3><p>General Medicine</p><span class="busy">● In consultation</span></div></div></section>
+
+      <section id="prescriptions" class="page-section hidden"><div class="section-title"><h2>Electronic Prescriptions</h2><button class="primary" onclick="showToast('Prescription form opened')">＋ New Prescription</button></div><div class="panel prescription"><div class="rx-head"><span>Rx</span><div><h3>Digital Prescription</h3><p>Secure doctor-generated medication order</p></div></div><div class="rx-grid"><label>Patient<input value="Rahul Kumar"></label><label>Doctor<input value="Dr. Arjun Menon"></label><label>Diagnosis<input placeholder="Enter diagnosis"></label><label>Medicine<input placeholder="Medicine + dosage"></label></div><button class="primary" onclick="showToast('Prescription saved')">Save Prescription</button></div></section>
+
+      <section id="billing" class="page-section hidden"><div class="section-title"><h2>Billing</h2><button class="primary" onclick="showToast('Invoice creation opened')">＋ Create Invoice</button></div><div class="panel"><div class="invoice"><div><span>Invoice #SH-2026-00984</span><h2>₹ 2,450.00</h2><p>Rahul Kumar · Consultation + Diagnostics</p></div><span class="status confirmed">Paid</span></div><hr><div class="invoice-line"><span>Consultation</span><b>₹ 800</b></div><div class="invoice-line"><span>Diagnostics</span><b>₹ 1,250</b></div><div class="invoice-line"><span>Medicine</span><b>₹ 400</b></div></div></section>
+
+      <section id="inventory" class="page-section hidden"><div class="section-title"><h2>Medicine Inventory</h2><button class="primary" onclick="showToast('Stock entry opened')">＋ Add Medicine</button></div><div class="panel"><div class="table-wrap"><table><thead><tr><th>Medicine</th><th>Batch</th><th>Stock</th><th>Expiry</th><th>Level</th></tr></thead><tbody><tr><td><strong>Amoxicillin 500mg</strong></td><td>AMX-2409</td><td>18</td><td>Nov 2026</td><td><span class="tag danger">Low stock</span></td></tr><tr><td><strong>Paracetamol 650mg</strong></td><td>PCM-8122</td><td>246</td><td>Mar 2027</td><td><span class="tag info">Healthy</span></td></tr><tr><td><strong>Metformin 500mg</strong></td><td>MET-6621</td><td>42</td><td>Jan 2027</td><td><span class="tag warning">Monitor</span></td></tr></tbody></table></div></div></section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="appointmentModal"><div class="modal"><button class="close" onclick="closeModal('appointmentModal')">×</button><h2>New Appointment</h2><p>Create a patient appointment. The Java backend can later apply the Strategy-based priority engine.</p><label>Patient<input placeholder="Patient name"></label><label>Doctor<select><option>Dr. Arjun Menon — Cardiology</option><option>Dr. Meera Nair — General Medicine</option></select></label><div class="two"><label>Severity<select><option>Emergency</option><option>Chronic</option><option>Routine</option></select></label><label>Date<input type="date"></label></div><button class="primary wide" onclick="closeModal('appointmentModal');showToast('Appointment created and priority calculated')">Create Appointment</button></div></div>
+  <div class="modal-backdrop" id="patientModal"><div class="modal"><button class="close" onclick="closeModal('patientModal')">×</button><h2>Register Patient</h2><label>Full name<input placeholder="Enter patient name"></label><div class="two"><label>Age<input type="number" placeholder="Age"></label><label>Blood group<select><option>O+</option><option>A+</option><option>B+</option><option>AB+</option></select></label></div><label>Phone<input placeholder="+91 XXXXX XXXXX"></label><button class="primary wide" onclick="closeModal('patientModal');showToast('Patient registered successfully')">Register Patient</button></div></div>
+  <div id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
