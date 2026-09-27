@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.medinexus.controller.RestockController">
+
+    <center>
+
+        <VBox spacing="18"
+              maxWidth="760"
+              BorderPane.alignment="CENTER">
+
+            <padding>
+                <Insets top="30"
+                        right="40"
+                        bottom="30"
+                        left="40"/>
+            </padding>
+
+            <Label text="Medicine Restock"
+                   style="-fx-font-size: 28px; -fx-font-weight: bold;"/>
+
+            <Label text="Add new stock to the hospital medicine inventory."
+                   style="-fx-font-size: 14px;"/>
+
+            <Separator/>
+
+            <VBox spacing="8">
+
+                <Label text="Medicine"
+                       style="-fx-font-weight: bold;"/>
+
+                <ComboBox fx:id="medicineComboBox"
+                          prefWidth="650"
+                          promptText="Select medicine"/>
+
+            </VBox>
+
+            <HBox spacing="30">
+
+                <VBox spacing="6">
+
+                    <Label text="Current Stock"
+                           style="-fx-font-weight: bold;"/>
+
+                    <Label fx:id="currentStockLabel"
+                           text="-"
+                           style="-fx-font-size: 18px;"/>
+
+                </VBox>
+
+                <VBox spacing="6">
+
+                    <Label text="Reorder Level"
+                           style="-fx-font-weight: bold;"/>
+
+                    <Label fx:id="reorderLevelLabel"
+                           text="-"
+                           style="-fx-font-size: 18px;"/>
+
+                </VBox>
+
+                <VBox spacing="6">
+
+                    <Label text="Stock Status"
+                           style="-fx-font-weight: bold;"/>
+
+                    <Label fx:id="stockStatusLabel"
+                           text="-"
+                           style="-fx-font-size: 18px;"/>
+
+                </VBox>
+
+            </HBox>
+
+            <Separator/>
+
+            <VBox spacing="8">
+
+                <Label text="Quantity to Add"
+                       style="-fx-font-weight: bold;"/>
+
+                <Spinner fx:id="quantitySpinner"
+                         prefWidth="180"/>
+
+            </VBox>
+
+            <VBox spacing="8">
+
+                <Label text="Restock Notes"
+                       style="-fx-font-weight: bold;"/>
+
+                <TextArea fx:id="notesArea"
+                          prefHeight="110"
+                          promptText="Example: New supplier delivery, purchase order number, batch information..."/>
+
+            </VBox>
+
+            <Button fx:id="restockButton"
+                    text="Restock Medicine"
+                    onAction="#handleRestock"
+                    prefWidth="220"
+                    prefHeight="42"
+                    style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+            <Label fx:id="messageLabel"
+                   wrapText="true"
+                   style="-fx-font-size: 14px;"/>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>

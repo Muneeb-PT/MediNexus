@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/25"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.medinexus.controller.AddPrescriptionController"
+      spacing="15"
+      styleClass="dashboard-content">
+
+    <Label text="Create E-Prescription"
+           styleClass="section-title"/>
+
+    <Label fx:id="patientLabel"
+           text="Patient: -"/>
+
+    <Label fx:id="doctorLabel"
+           text="Doctor: -"/>
+
+    <Label fx:id="recordLabel"
+           text="Medical Record: -"/>
+
+    <GridPane hgap="12"
+              vgap="12">
+
+        <Label text="Medicine"
+               GridPane.columnIndex="0"
+               GridPane.rowIndex="0"/>
+
+        <ComboBox fx:id="medicineComboBox"
+                  prefWidth="300"
+                  GridPane.columnIndex="1"
+                  GridPane.rowIndex="0"/>
+
+        <Label text="Quantity"
+               GridPane.columnIndex="0"
+               GridPane.rowIndex="1"/>
+
+        <TextField fx:id="quantityField"
+                   promptText="Enter quantity"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="1"/>
+
+        <Label text="Dosage"
+               GridPane.columnIndex="0"
+               GridPane.rowIndex="2"/>
+
+        <TextField fx:id="dosageField"
+                   promptText="Example: 500 mg"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="2"/>
+
+        <Label text="Frequency"
+               GridPane.columnIndex="0"
+               GridPane.rowIndex="3"/>
+
+        <TextField fx:id="frequencyField"
+                   promptText="Example: Twice daily"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="3"/>
+
+        <Label text="Duration"
+               GridPane.columnIndex="0"
+               GridPane.rowIndex="4"/>
+
+        <TextField fx:id="durationField"
+                   promptText="Example: 5 days"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="4"/>
+
+        <Label text="Instructions"
+               GridPane.columnIndex="0"
+               GridPane.rowIndex="5"/>
+
+        <TextArea fx:id="instructionsField"
+                  promptText="Instructions for the patient"
+                  prefRowCount="4"
+                  wrapText="true"
+                  GridPane.columnIndex="1"
+                  GridPane.rowIndex="5"/>
+
+    </GridPane>
+
+    <Label fx:id="stockLabel"
+           text="Select a medicine to view stock."/>
+
+    <HBox spacing="10">
+
+        <Button text="Save Prescription"
+                onAction="#handleSave"/>
+
+        <Button text="Clear"
+                onAction="#handleClear"/>
+
+        <Button text="Cancel"
+                onAction="#handleCancel"/>
+
+    </HBox>
+
+</VBox>

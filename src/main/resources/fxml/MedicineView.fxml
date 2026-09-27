@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.medinexus.controller.MedicineController">
+
+    <center>
+
+        <ScrollPane fitToWidth="true"
+                    fitToHeight="true"
+                    hbarPolicy="NEVER"
+                    vbarPolicy="AS_NEEDED">
+
+            <VBox spacing="20"
+                  styleClass="dashboard-content">
+
+                <padding>
+                    <Insets top="20"
+                            right="20"
+                            bottom="30"
+                            left="20"/>
+                </padding>
+
+                <!-- ================================================= -->
+                <!-- INVENTORY HEADER -->
+                <!-- ================================================= -->
+
+                <VBox spacing="8">
+
+                    <Label text="Medicine Inventory"
+                           styleClass="section-title"/>
+
+                    <Label fx:id="summaryLabel"
+                           text="Inventory Summary"/>
+
+                </VBox>
+
+
+                <!-- ================================================= -->
+                <!-- SEARCH AND FILTER -->
+                <!-- ================================================= -->
+
+                <HBox spacing="10">
+
+                    <TextField fx:id="searchField"
+                               promptText="Search medicine, category, manufacturer or ID..."
+                               prefWidth="420"/>
+
+                    <ComboBox fx:id="statusFilterComboBox"
+                              prefWidth="180"
+                              promptText="Stock Status"/>
+
+                    <Button text="Clear Filters"
+                            onAction="#handleClearFilters"/>
+
+                </HBox>
+
+
+                <!-- ================================================= -->
+                <!-- CURRENT STOCK -->
+                <!-- ================================================= -->
+
+                <VBox spacing="10">
+
+                    <Label text="Current Stock"
+                           styleClass="section-title"/>
+
+                    <TableView fx:id="medicineTable"
+                               prefHeight="420"
+                               minHeight="300">
+
+                        <columns>
+
+                            <TableColumn fx:id="idColumn"
+                                         text="ID"
+                                         prefWidth="70"/>
+
+                            <TableColumn fx:id="nameColumn"
+                                         text="Medicine"
+                                         prefWidth="180"/>
+
+                            <TableColumn fx:id="categoryColumn"
+                                         text="Category"
+                                         prefWidth="150"/>
+
+                            <TableColumn fx:id="manufacturerColumn"
+                                         text="Manufacturer"
+                                         prefWidth="180"/>
+
+                            <TableColumn fx:id="priceColumn"
+                                         text="Unit Price"
+                                         prefWidth="100"/>
+
+                            <TableColumn fx:id="quantityColumn"
+                                         text="Quantity"
+                                         prefWidth="90"/>
+
+                            <TableColumn fx:id="stockColumn"
+                                         text="Stock Status"
+                                         prefWidth="130"/>
+
+                        </columns>
+
+                    </TableView>
+
+                </VBox>
+
+
+                <!-- ================================================= -->
+                <!-- INVENTORY HISTORY -->
+                <!-- ================================================= -->
+
+                <VBox spacing="10">
+
+                    <Label text="Inventory Transaction History"
+                           styleClass="section-title"/>
+
+                    <Label text="Audit trail of stock changes performed by authorized staff."/>
+
+                    <TableView fx:id="historyTable"
+                               prefHeight="420"
+                               minHeight="300">
+
+                        <columns>
+
+                            <TableColumn fx:id="transactionIdColumn"
+                                         text="Transaction ID"
+                                         prefWidth="110"/>
+
+                            <TableColumn fx:id="historyMedicineColumn"
+                                         text="Medicine ID"
+                                         prefWidth="90"/>
+
+                            <TableColumn fx:id="typeColumn"
+                                         text="Type"
+                                         prefWidth="110"/>
+
+                            <TableColumn fx:id="historyQuantityColumn"
+                                         text="Quantity"
+                                         prefWidth="90"/>
+
+                            <TableColumn fx:id="stockBeforeColumn"
+                                         text="Stock Before"
+                                         prefWidth="110"/>
+
+                            <TableColumn fx:id="stockAfterColumn"
+                                         text="Stock After"
+                                         prefWidth="100"/>
+
+                            <TableColumn fx:id="referenceColumn"
+                                         text="Reference"
+                                         prefWidth="150"/>
+
+                            <TableColumn fx:id="performedByColumn"
+                                         text="Performed By"
+                                         prefWidth="100"/>
+
+                            <TableColumn fx:id="notesColumn"
+                                         text="Notes"
+                                         prefWidth="260"/>
+
+                            <TableColumn fx:id="createdAtColumn"
+                                         text="Date / Time"
+                                         prefWidth="180"/>
+
+                        </columns>
+
+                    </TableView>
+
+                </VBox>
+
+
+                <!-- ================================================= -->
+                <!-- ACTIONS -->
+                <!-- ================================================= -->
+
+                <HBox spacing="10">
+
+                    <Button text="Restock Medicine"
+                            onAction="#handleRestock"/>
+
+                    <Button text="Refresh"
+                            onAction="#handleRefresh"/>
+
+                </HBox>
+
+            </VBox>
+
+        </ScrollPane>
+
+    </center>
+
+</BorderPane>

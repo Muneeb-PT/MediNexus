@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.medinexus.controller.PharmacyBillingController">
+
+    <top>
+        <VBox spacing="8"
+              styleClass="dashboard-content">
+
+            <Label text="Pharmacy &amp; Billing"
+                   styleClass="section-title"/>
+
+            <Label text="Dispense prescribed medicines and generate patient bills."
+                   styleClass="empty-message"/>
+
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="15"
+              styleClass="dashboard-content">
+
+            <TableView fx:id="prescriptionTable"
+                       prefHeight="350">
+
+                <columns>
+
+                    <TableColumn fx:id="prescriptionIdColumn"
+                                 text="Prescription ID"
+                                 prefWidth="110"/>
+
+                    <TableColumn fx:id="patientColumn"
+                                 text="Patient"
+                                 prefWidth="160"/>
+
+                    <TableColumn fx:id="medicineColumn"
+                                 text="Medicine"
+                                 prefWidth="160"/>
+
+                    <TableColumn fx:id="quantityColumn"
+                                 text="Quantity"
+                                 prefWidth="90"/>
+
+                    <TableColumn fx:id="dosageColumn"
+                                 text="Dosage"
+                                 prefWidth="100"/>
+
+                    <TableColumn fx:id="frequencyColumn"
+                                 text="Frequency"
+                                 prefWidth="120"/>
+
+                    <TableColumn fx:id="durationColumn"
+                                 text="Duration"
+                                 prefWidth="110"/>
+
+                    <TableColumn fx:id="stockColumn"
+                                 text="Stock"
+                                 prefWidth="90"/>
+
+                    <TableColumn fx:id="statusColumn"
+                                 text="Status"
+                                 prefWidth="100.0"/>
+
+                </columns>
+
+            </TableView>
+
+            <GridPane hgap="15"
+                      vgap="10">
+
+                <Label text="Selected Medicine:"
+                       GridPane.rowIndex="0"
+                       GridPane.columnIndex="0"/>
+
+                <Label fx:id="selectedMedicineLabel"
+                       text="-"
+                       GridPane.rowIndex="0"
+                       GridPane.columnIndex="1"/>
+
+                <Label text="Medicine Charge:"
+                       GridPane.rowIndex="1"
+                       GridPane.columnIndex="0"/>
+
+                <Label fx:id="medicineChargeLabel"
+                       text="₹0.00"
+                       GridPane.rowIndex="1"
+                       GridPane.columnIndex="1"/>
+
+                <Label text="Consultation Charge:"
+                       GridPane.rowIndex="0"
+                       GridPane.columnIndex="2"/>
+
+                <TextField fx:id="consultationChargeField"
+                           text="300"
+                           prefWidth="120"
+                           GridPane.rowIndex="0"
+                           GridPane.columnIndex="3"/>
+
+                <Label text="Other Charges:"
+                       GridPane.rowIndex="1"
+                       GridPane.columnIndex="2"/>
+
+                <TextField fx:id="otherChargesField"
+                           text="0"
+                           prefWidth="120"
+                           GridPane.rowIndex="1"
+                           GridPane.columnIndex="3"/>
+
+                <Label text="Total:"
+                       GridPane.rowIndex="2"
+                       GridPane.columnIndex="2"/>
+
+                <Label fx:id="totalLabel"
+                       text="₹300.00"
+                       styleClass="card-value"
+                       GridPane.rowIndex="2"
+                       GridPane.columnIndex="3"/>
+
+            </GridPane>
+
+            <HBox spacing="10">
+
+                <Button text="Refresh"
+                        onAction="#handleRefresh"/>
+
+                <Button text="Calculate"
+                        onAction="#handleCalculate"/>
+
+                <Button text="Dispense Medicine"
+                        onAction="#handleDispense"/>
+
+                <Button text="Generate Bill"
+                        onAction="#handleGenerateBill"/>
+
+                <Button text="Mark Selected Bill Paid"
+                        onAction="#handleMarkPaid"/>
+
+            </HBox>
+
+            <Label fx:id="statusLabel"
+                   text=""
+                   styleClass="empty-message"/>
+
+        </VBox>
+    </center>
+
+</BorderPane>

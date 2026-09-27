@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane fx:id="splashRoot"
+           xmlns="http://javafx.com/javafx/25"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.medinexus.controller.SplashController"
+           stylesheets="@../css/style.css">
+
+    <VBox alignment="CENTER"
+          spacing="18">
+
+        <ImageView fitHeight="150"
+                   fitWidth="150"
+                   preserveRatio="true">
+
+            <image>
+                <Image url="@../images/logo.png"/>
+            </image>
+
+        </ImageView>
+
+        <Label text="MediNexus"
+               styleClass="splash-title"/>
+
+        <Label text="Smart Hospital Management System"
+               styleClass="splash-subtitle"/>
+
+        <ProgressIndicator prefWidth="35"
+                           prefHeight="35"/>
+
+    </VBox>
+
+</StackPane>

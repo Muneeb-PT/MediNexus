@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.medinexus.controller.OnlinePaymentController">
+
+    <top>
+
+        <VBox spacing="8"
+              styleClass="dashboard-content">
+
+            <Label text="Online Payment"
+                   styleClass="section-title"/>
+
+            <Label text="Select a pending bill and choose a payment method."/>
+
+        </VBox>
+
+    </top>
+
+
+    <center>
+
+        <VBox spacing="15"
+              styleClass="dashboard-content">
+
+            <!-- ================================================= -->
+            <!-- BILL TABLE -->
+            <!-- ================================================= -->
+
+            <TableView fx:id="billTable"
+                       prefHeight="350">
+
+                <columns>
+
+                    <TableColumn fx:id="billIdColumn"
+                                 text="Bill ID"
+                                 prefWidth="100"/>
+
+                    <TableColumn fx:id="appointmentIdColumn"
+                                 text="Appointment ID"
+                                 prefWidth="130"/>
+
+                    <TableColumn fx:id="amountColumn"
+                                 text="Amount"
+                                 prefWidth="130"/>
+
+                    <TableColumn fx:id="statusColumn"
+                                 text="Status"
+                                 prefWidth="130"/>
+
+                    <TableColumn fx:id="dateColumn"
+                                 text="Created"
+                                 prefWidth="180"/>
+
+                </columns>
+
+            </TableView>
+
+
+            <!-- ================================================= -->
+            <!-- SELECTED BILL -->
+            <!-- ================================================= -->
+
+            <VBox spacing="8">
+
+                <Label text="Selected Bill"
+                       styleClass="section-title"/>
+
+                <Label fx:id="selectedBillLabel"
+                       text="No bill selected."/>
+
+                <Label text="Amount"/>
+
+                <Label fx:id="amountLabel"
+                       text="₹0.00"
+                       styleClass="section-title"/>
+
+            </VBox>
+
+
+            <!-- ================================================= -->
+            <!-- PAYMENT METHOD -->
+            <!-- ================================================= -->
+
+            <HBox spacing="12"
+                  alignment="CENTER_LEFT">
+
+                <Label text="Payment Method:"/>
+
+                <ComboBox fx:id="paymentMethodComboBox"
+                          prefWidth="220"/>
+
+            </HBox>
+
+
+            <!-- ================================================= -->
+            <!-- STATUS -->
+            <!-- ================================================= -->
+
+            <Label fx:id="statusLabel"
+                   text="Select a bill to continue with payment."
+                   wrapText="true"/>
+
+
+            <!-- ================================================= -->
+            <!-- ACTION BUTTONS -->
+            <!-- ================================================= -->
+
+            <HBox spacing="10">
+
+                <Button text="Refresh"
+                        onAction="#handleRefresh"/>
+
+                <Button text="Pay Now"
+                        onAction="#handlePayOnline"/>
+
+            </HBox>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>

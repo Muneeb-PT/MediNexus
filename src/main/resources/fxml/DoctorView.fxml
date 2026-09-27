@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/25"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.medinexus.controller.DoctorController"
+      spacing="20"
+      styleClass="dashboard-content">
+
+    <Label text="Doctor Dashboard"
+           styleClass="section-title"/>
+
+    <Label fx:id="welcomeLabel"
+           text="Welcome, Doctor"/>
+
+    <HBox spacing="30">
+
+        <VBox spacing="8"
+              styleClass="dashboard-card">
+
+            <Label text="Specialization"/>
+
+            <Label fx:id="specializationLabel"
+                   text="-"
+                   styleClass="card-value"/>
+
+        </VBox>
+
+        <VBox spacing="8"
+              styleClass="dashboard-card">
+
+            <Label text="My Appointments"/>
+
+            <Label fx:id="appointmentCountLabel"
+                   text="0"
+                   styleClass="card-value"/>
+
+        </VBox>
+
+    </HBox>
+
+
+    <Label text="My Appointments"
+           styleClass="section-title"/>
+
+
+    <TableView fx:id="appointmentTable"
+               prefHeight="400">
+
+        <columns>
+
+            <TableColumn fx:id="patientColumn"
+                         text="Patient"
+                         prefWidth="180"/>
+
+            <TableColumn fx:id="dateColumn"
+                         text="Date"
+                         prefWidth="130"/>
+
+            <TableColumn fx:id="timeColumn"
+                         text="Time"
+                         prefWidth="100"/>
+
+            <TableColumn fx:id="reasonColumn"
+                         text="Reason"
+                         prefWidth="250"/>
+
+            <TableColumn fx:id="urgencyColumn"
+                         text="Urgency"
+                         prefWidth="120"/>
+
+            <TableColumn fx:id="statusColumn"
+                         text="Status"
+                         prefWidth="120"/>
+
+        </columns>
+
+    </TableView>
+
+</VBox>

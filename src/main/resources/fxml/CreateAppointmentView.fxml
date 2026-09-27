@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/25"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.medinexus.controller.CreateAppointmentController"
+      spacing="20"
+      styleClass="dashboard-content">
+
+    <Label text="Create Appointment"
+           styleClass="section-title"/>
+
+    <Label text="Schedule a new hospital appointment"/>
+
+    <GridPane hgap="20"
+              vgap="15">
+
+        <!-- Patient -->
+
+        <Label text="Patient:"
+               GridPane.rowIndex="0"
+               GridPane.columnIndex="0"/>
+
+        <ComboBox fx:id="patientComboBox"
+                  promptText="Select Patient"
+                  prefWidth="300"
+                  GridPane.rowIndex="0"
+                  GridPane.columnIndex="1"/>
+
+
+        <!-- Doctor -->
+
+        <Label text="Doctor:"
+               GridPane.rowIndex="1"
+               GridPane.columnIndex="0"/>
+
+        <ComboBox fx:id="doctorComboBox"
+                  promptText="Select Doctor"
+                  prefWidth="300"
+                  GridPane.rowIndex="1"
+                  GridPane.columnIndex="1"/>
+
+
+        <!-- Date -->
+
+        <Label text="Date:"
+               GridPane.rowIndex="2"
+               GridPane.columnIndex="0"/>
+
+        <DatePicker fx:id="datePicker"
+                    prefWidth="300"
+                    GridPane.rowIndex="2"
+                    GridPane.columnIndex="1"/>
+
+
+        <!-- Time -->
+
+        <Label text="Time:"
+               GridPane.rowIndex="3"
+               GridPane.columnIndex="0"/>
+
+        <ComboBox fx:id="timeComboBox"
+                  promptText="Select Time"
+                  prefWidth="300"
+                  GridPane.rowIndex="3"
+                  GridPane.columnIndex="1"/>
+
+
+        <!-- Reason -->
+
+        <Label text="Reason:"
+               GridPane.rowIndex="4"
+               GridPane.columnIndex="0"/>
+
+        <TextArea fx:id="reasonField"
+                  promptText="Enter reason for appointment"
+                  prefWidth="300"
+                  prefHeight="100"
+                  wrapText="true"
+                  GridPane.rowIndex="4"
+                  GridPane.columnIndex="1"/>
+
+
+        <!-- Urgency -->
+
+        <Label text="Urgency:"
+               GridPane.rowIndex="5"
+               GridPane.columnIndex="0"/>
+
+        <ComboBox fx:id="urgencyComboBox"
+                  promptText="Select urgency"
+                  prefWidth="300"
+                  GridPane.rowIndex="5"
+                  GridPane.columnIndex="1"/>
+
+    </GridPane>
+
+
+    <!-- Priority preview -->
+
+    <HBox spacing="15">
+
+        <Label text="Priority:"
+               styleClass="section-title"/>
+
+        <Label fx:id="priorityLabel"
+               text="Will be calculated automatically"/>
+
+    </HBox>
+
+
+    <!-- Message -->
+
+    <Label fx:id="messageLabel"
+           text=""
+           styleClass="login-message"/>
+
+
+    <!-- Buttons -->
+
+    <HBox spacing="15">
+
+        <Button text="BOOK APPOINTMENT"
+                onAction="#handleCreateAppointment"
+                styleClass="login-button"
+                prefWidth="220"
+                prefHeight="45"/>
+
+        <Button text="Clear"
+                onAction="#handleClear"
+                prefWidth="100"
+                prefHeight="45"/>
+
+    </HBox>
+
+</VBox>

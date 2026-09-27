@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.medinexus.controller.HelpController"
+            style="-fx-background-color: #f5f7fb;">
+
+    <top>
+        <HBox spacing="15"
+              alignment="CENTER_LEFT"
+              style="-fx-background-color: #ffffff; -fx-border-color: #e1e5eb; -fx-border-width: 0 0 1 0;">
+            <padding>
+                <Insets top="18" right="25" bottom="18" left="25"/>
+            </padding>
+
+            <Button fx:id="backButton"
+                    text="← Dashboard"
+                    onAction="#handleBack"
+                    style="-fx-background-color: #eef2f7;
+                           -fx-text-fill: #263238;
+                           -fx-font-weight: bold;
+                           -fx-background-radius: 8;
+                           -fx-padding: 9 16;"/>
+
+            <VBox spacing="3">
+                <Label text="Help Center"
+                       style="-fx-font-size: 22px;
+                              -fx-font-weight: bold;
+                              -fx-text-fill: #17202a;"/>
+
+                <Label fx:id="roleLabel"
+                       text="MediNexus Help Center"
+                       style="-fx-font-size: 12px;
+                              -fx-text-fill: #6b7280;"/>
+            </VBox>
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true"
+                    style="-fx-background-color: transparent;
+                           -fx-background: transparent;">
+            <content>
+                <VBox fx:id="helpContent"
+                      spacing="18"
+                      maxWidth="950">
+                    <padding>
+                        <Insets top="30" right="40" bottom="40" left="40"/>
+                    </padding>
+
+                    <Label text="How can we help?"
+                           style="-fx-font-size: 28px;
+                                  -fx-font-weight: bold;
+                                  -fx-text-fill: #17202a;"/>
+
+                    <Label text="Find answers to common MediNexus questions and learn how to use the hospital management system."
+                           wrapText="true"
+                           style="-fx-font-size: 14px;
+                                  -fx-text-fill: #667085;"/>
+
+                    <Accordion fx:id="helpAccordion"
+                               maxWidth="900">
+
+                        <panes>
+
+                            <TitledPane text="Getting Started"
+                                        expanded="false">
+                                <content>
+                                    <Label wrapText="true"
+                                           text="Use the dashboard to access the features available to your role. Your available modules depend on whether you are an Administrator, Doctor, Receptionist, or Patient."
+                                           style="-fx-padding: 18;
+                                                  -fx-font-size: 13px;"/>
+                                </content>
+                            </TitledPane>
+
+                            <TitledPane text="Appointments"
+                                        expanded="false">
+                                <content>
+                                    <Label wrapText="true"
+                                           text="Appointments can be scheduled and managed according to your role. Patients can access their appointments, while doctors can view appointments assigned to them."
+                                           style="-fx-padding: 18;
+                                                  -fx-font-size: 13px;"/>
+                                </content>
+                            </TitledPane>
+
+                            <TitledPane text="Medical Records"
+                                        expanded="false">
+                                <content>
+                                    <Label wrapText="true"
+                                           text="Medical records contain clinical information associated with a patient. Access is restricted according to the user's role and ownership rules."
+                                           style="-fx-padding: 18;
+                                                  -fx-font-size: 13px;"/>
+                                </content>
+                            </TitledPane>
+
+                            <TitledPane text="Prescriptions"
+                                        expanded="false">
+                                <content>
+                                    <Label wrapText="true"
+                                           text="Doctors can create prescriptions for patients through the medical-record workflow. Pharmacy staff can process eligible prescriptions according to the hospital workflow."
+                                           style="-fx-padding: 18;
+                                                  -fx-font-size: 13px;"/>
+                                </content>
+                            </TitledPane>
+
+                            <TitledPane text="Billing &amp; Payments"
+                                        expanded="false">
+                                <content>
+                                    <Label wrapText="true"
+                                           text="Patients can view their bills and use supported online payment methods. Authorized hospital staff can manage billing and cash payments."
+                                           style="-fx-padding: 18;
+                                                  -fx-font-size: 13px;"/>
+                                </content>
+                            </TitledPane>
+
+                            <TitledPane text="Pharmacy &amp; Medicine Inventory"
+                                        expanded="false">
+                                <content>
+                                    <Label wrapText="true"
+                                           text="Authorized pharmacy staff can dispense medicines and manage inventory operations. Inventory actions are restricted according to the user's role."
+                                           style="-fx-padding: 18;
+                                                  -fx-font-size: 13px;"/>
+                                </content>
+                            </TitledPane>
+
+                            <TitledPane text="Identity Verification"
+                                        expanded="false">
+                                <content>
+                                    <Label wrapText="true"
+                                           text="Identity verification is designed to connect a patient identity with a trusted digital identity provider. MediNexus must not claim that a real government identity has been verified unless verification is actually completed through an authorized provider."
+                                           style="-fx-padding: 18;
+                                                  -fx-font-size: 13px;"/>
+                                </content>
+                            </TitledPane>
+
+                            <TitledPane text="Emergency Services"
+                                        expanded="false">
+                                <content>
+                                    <Label wrapText="true"
+                                           text="Emergency assistance allows users to request appropriate emergency support. Emergency requests should contain the emergency category, required vehicle type, patient information, and contact details."
+                                           style="-fx-padding: 18;
+                                                  -fx-font-size: 13px;"/>
+                                </content>
+                            </TitledPane>
+
+                            <TitledPane text="Account &amp; Security"
+                                        expanded="false">
+                                <content>
+                                    <Label wrapText="true"
+                                           text="Keep your account credentials private. MediNexus uses role-based authorization and ownership checks to restrict access to protected information."
+                                           style="-fx-padding: 18;
+                                                  -fx-font-size: 13px;"/>
+                                </content>
+                            </TitledPane>
+
+                            <TitledPane text="Support &amp; Complaints"
+                                        expanded="false">
+                                <content>
+                                    <Label wrapText="true"
+                                           text="Use Feedback &amp; Complaints to report an issue, suggest an improvement, or request assistance from the hospital administration."
+                                           style="-fx-padding: 18;
+                                                  -fx-font-size: 13px;"/>
+                                </content>
+                            </TitledPane>
+
+                        </panes>
+
+                    </Accordion>
+
+                    <Label text="MediNexus • Smart Hospital Management System"
+                           style="-fx-font-size: 12px;
+                                  -fx-text-fill: #98a2b3;"/>
+
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

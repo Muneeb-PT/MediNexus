@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/25"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.medinexus.controller.AppointmentController"
+      spacing="15"
+      styleClass="dashboard-content">
+
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
+
+    <HBox alignment="CENTER_LEFT"
+          spacing="15">
+
+        <Label text="Appointments"
+               styleClass="section-title"/>
+
+        <Button text="Refresh"
+                onAction="#handleRefresh"/>
+
+        <Button text="Create Appointment"
+                onAction="#handleCreateAppointment"/>
+
+    </HBox>
+
+
+    <!-- =====================================================
+         SMART TRIAGE DESCRIPTION
+         ===================================================== -->
+
+    <VBox spacing="4"
+          styleClass="triage-header">
+
+        <Label text="Smart Triage Queue"
+               styleClass="triage-title"/>
+
+        <Label text="Appointments are ordered using rule-based severity and waiting-time prioritization."
+               styleClass="triage-description"/>
+
+    </VBox>
+
+
+    <!-- =====================================================
+         TRIAGE LEGEND
+         ===================================================== -->
+
+    <HBox spacing="20"
+          alignment="CENTER_LEFT"
+          styleClass="triage-legend">
+
+        <Label text="EMERGENCY"
+               styleClass="triage-legend-emergency"/>
+
+        <Label text="CHRONIC"
+               styleClass="triage-legend-chronic"/>
+
+        <Label text="ROUTINE"
+               styleClass="triage-legend-routine"/>
+
+        <Label text="Final score = severity score + waiting-time bonus"
+               styleClass="triage-legend-info"/>
+
+    </HBox>
+
+
+    <!-- =====================================================
+         MESSAGE
+         ===================================================== -->
+
+    <Label fx:id="messageLabel"
+           text=""
+           styleClass="login-message"/>
+
+
+    <!-- =====================================================
+         ACTION BUTTONS
+         ===================================================== -->
+
+    <HBox spacing="10">
+
+        <Button fx:id="confirmButton"
+                text="Confirm Selected"
+                onAction="#handleConfirm"
+                disable="true"/>
+
+        <Button fx:id="completeButton"
+                text="Complete Selected"
+                onAction="#handleComplete"
+                disable="true"/>
+
+        <Button fx:id="cancelButton"
+                text="Cancel Selected"
+                onAction="#handleCancel"
+                disable="true"/>
+
+        <Button fx:id="medicalRecordButton"
+                text="Create Medical Record"
+                onAction="#handleCreateMedicalRecord"
+                disable="true"/>
+
+        <Button fx:id="triageDetailsButton"
+                text="Explain Triage"
+                onAction="#handleTriageDetails"
+                disable="true"/>
+
+    </HBox>
+
+
+    <!-- =====================================================
+         APPOINTMENT TABLE
+         ===================================================== -->
+
+    <TableView fx:id="appointmentTable"
+               prefHeight="450"
+               VBox.vgrow="ALWAYS">
+
+        <columns>
+
+            <TableColumn fx:id="idColumn"
+                         text="ID"
+                         prefWidth="70"/>
+
+            <TableColumn fx:id="patientColumn"
+                         text="Patient"
+                         prefWidth="150"/>
+
+            <TableColumn fx:id="doctorColumn"
+                         text="Doctor"
+                         prefWidth="150"/>
+
+            <TableColumn fx:id="dateColumn"
+                         text="Date"
+                         prefWidth="120"/>
+
+            <TableColumn fx:id="timeColumn"
+                         text="Time"
+                         prefWidth="100"/>
+
+            <TableColumn fx:id="reasonColumn"
+                         text="Reason"
+                         prefWidth="180"/>
+
+            <TableColumn fx:id="urgencyColumn"
+                         text="Urgency"
+                         prefWidth="110"/>
+
+            <TableColumn fx:id="priorityScoreColumn"
+                         text="Triage Score"
+                         prefWidth="110"/>
+
+            <TableColumn fx:id="priorityColumn"
+                         text="Priority"
+                         prefWidth="120"/>
+
+            <TableColumn fx:id="statusColumn"
+                         text="Status"
+                         prefWidth="120"/>
+
+        </columns>
+
+    </TableView>
+
+</VBox>
