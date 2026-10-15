@@ -104,18 +104,20 @@ public class PatientService {
          * Patients can only retrieve their own
          * patient account.
          */
-        if (currentUser.getRole() == Role.PATIENT
+        if ((currentUser.getRole() == Role.PATIENT
+                || currentUser.getRole() == Role.DOCTOR)
                 && currentUser.getUserId() != userId) {
 
             throw new SecurityException(
-                    "Patients can access only their own profile."
+                    "Users can access only their own account through this method."
             );
         }
 
         /*
-         * Doctors may use this method only for their
-         * own logged-in account when retrieving a
-         * patient user record is not intended.
+         * This method is for resolving a patient profile by
+         * its linked user ID. Operational roles may look up
+         * patient profiles; patients and doctors cannot use
+         * it to enumerate other users' profiles.
          */
         return repository.findByUserId(
                 userId
