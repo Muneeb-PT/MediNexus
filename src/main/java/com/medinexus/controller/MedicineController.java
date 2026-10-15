@@ -10,7 +10,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +20,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class MedicineController {
 
@@ -28,6 +32,12 @@ public class MedicineController {
 
     @FXML
     private Label summaryLabel;
+
+    @FXML
+    private TextField searchField;
+
+    @FXML
+    private ComboBox<String> statusFilterComboBox;
 
     @FXML
     private TableView<Medicine> medicineTable;
@@ -129,6 +139,9 @@ public class MedicineController {
     private final ObservableList<Medicine> medicines =
             FXCollections.observableArrayList();
 
+    // Full result set; the table list contains only the current filtered view.
+    private final List<Medicine> allMedicines = new ArrayList<>();
+
     private final ObservableList<
             MedicineInventoryTransactionRepository.InventoryTransaction>
             inventoryTransactions =
@@ -151,6 +164,17 @@ public class MedicineController {
 
         historyTable.setItems(
                 inventoryTransactions
+        );
+
+        statusFilterComboBox.getItems().setAll(
+                "All Stock", "Available", "Low Stock", "Out of Stock"
+        );
+        statusFilterComboBox.getSelectionModel().selectFirst();
+        searchField.textProperty().addListener(
+                (observable, oldValue, newValue) -> applyMedicineFilters()
+        );
+        statusFilterComboBox.valueProperty().addListener(
+                (observable, oldValue, newValue) -> applyMedicineFilters()
         );
 
         loadMedicines();
@@ -398,10 +422,9 @@ public class MedicineController {
             List<Medicine> result =
                     medicineService.getAllMedicines();
 
-            medicines.setAll(
-                    result
-            );
-
+            allMedicines.clear();
+            allMedicines.addAll(result);
+            applyMedicineFilters();
             updateSummary();
 
         } catch (Exception e) {
@@ -430,6 +453,7 @@ public class MedicineController {
             inventoryTransactions.setAll(
                     result
             );
+            updateSummary();
 
         } catch (SecurityException e) {
 
@@ -451,14 +475,14 @@ public class MedicineController {
     private void updateSummary() {
 
         int total =
-                medicines.size();
+                allMedicines.size();
 
         int outOfStock = 0;
 
         int lowStock = 0;
 
         for (Medicine medicine :
-                medicines) {
+                allMedicines) {
 
             if (medicine.getQuantity() == 0) {
 
@@ -482,6 +506,46 @@ public class MedicineController {
                         + " | Transactions: "
                         + inventoryTransactions.size()
         );
+    }
+
+    // =========================================================
+    // SEARCH AND STOCK FILTERS
+    // =========================================================
+
+    private void applyMedicineFilters() {
+        if (searchField == null || statusFilterComboBox == null) {
+            return;
+        }
+
+        String query = searchField.getText() == null
+                ? ""
+                : searchField.getText().trim().toLowerCase(Locale.ROOT);
+        String selectedStatus = statusFilterComboBox.getValue();
+
+        List<Medicine> filtered = allMedicines.stream()
+                .filter(medicine -> {
+                    String searchable = (String.valueOf(medicine.getMedicineId()) + " "
+                            + String.valueOf(medicine.getName()) + " "
+                            + String.valueOf(medicine.getCategory()) + " "
+                            + String.valueOf(medicine.getManufacturer()))
+                            .toLowerCase(Locale.ROOT);
+                    return query.isEmpty() || searchable.contains(query);
+                })
+                .filter(medicine -> {
+                    if (selectedStatus == null || "All Stock".equals(selectedStatus)) {
+                        return true;
+                    }
+                    if (medicine.getQuantity() <= 0) {
+                        return "Out of Stock".equals(selectedStatus);
+                    }
+                    if (medicineService.isLowStock(medicine)) {
+                        return "Low Stock".equals(selectedStatus);
+                    }
+                    return "Available".equals(selectedStatus);
+                })
+                .toList();
+
+        medicines.setAll(filtered);
     }
 
     // =========================================================
@@ -560,9 +624,8 @@ public class MedicineController {
 
     @FXML
     private void handleClearFilters() {
-
-        loadMedicines();
-
-        loadInventoryHistory();
+        searchField.clear();
+        statusFilterComboBox.getSelectionModel().selectFirst();
+        applyMedicineFilters();
     }
 }
