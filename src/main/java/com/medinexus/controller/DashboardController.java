@@ -11,6 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
@@ -20,6 +21,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -222,6 +225,9 @@ public class DashboardController {
 
     private static DashboardController activeDashboardController;
 
+    // Keep the original dashboard nodes so Back/Dashboard navigation can restore them.
+    private final List<Node> dashboardContentNodes = new ArrayList<>();
+
 
     // =========================================================
     // INITIALIZE
@@ -231,6 +237,11 @@ public class DashboardController {
     public void initialize() {
 
         activeDashboardController = this;
+
+        if (contentArea != null) {
+            dashboardContentNodes.clear();
+            dashboardContentNodes.addAll(contentArea.getChildren());
+        }
 
         User currentUser =
                 SessionManager.getCurrentUser();
@@ -474,6 +485,12 @@ public class DashboardController {
 
         if (contentArea == null) {
             return;
+        }
+
+        // Other screens are loaded into contentArea. Restore the dashboard before refreshing it.
+        if (!dashboardContentNodes.isEmpty()
+                && !contentArea.getChildren().equals(dashboardContentNodes)) {
+            contentArea.getChildren().setAll(dashboardContentNodes);
         }
 
         loadDashboardStatistics();
