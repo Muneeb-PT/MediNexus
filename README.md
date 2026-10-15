@@ -138,11 +138,21 @@ Open the downloaded project folder in your Java IDE and allow it to load the pro
 ### 3. Configure MySQL
 
 1. Start MySQL Server.
-2. Create or initialize the MediNexus database using the SQL schema or setup instructions included in the repository, if provided.
-3. Configure the database connection using the settings expected by the application's database configuration.
-4. Keep database passwords and other private credentials out of source control.
+2. Create the `medinexus` database and the tables required by the repository's JDBC queries. **A complete SQL schema/seed script is not currently included**, so a fresh database setup is not yet fully automated.
+3. Configure the connection without committing credentials. The default connection URL targets `127.0.0.1:3307/medinexus`; override it with `MEDINEXUS_DB_URL` if your MySQL port or database name differs.
+4. Set the database password in the environment before launching the application.
 
-> **Note:** Database names, table definitions, and connection settings must match the current source code. Check the project's configuration before running it; do not assume example credentials will work.
+**Windows PowerShell (current terminal only):**
+
+```powershell
+$env:MEDINEXUS_DB_PASSWORD = "your-local-mysql-password"
+# Optional if your MySQL username is not root:
+$env:MEDINEXUS_DB_USER = "your-mysql-username"
+```
+
+The application also accepts the JVM properties `-Dmedinexus.db.password`, `-Dmedinexus.db.user`, and `-Dmedinexus.db.url`. Never commit the actual password to GitHub.
+
+> **Important:** Any database password previously committed to a public repository should be considered exposed and rotated. Removing it from the latest source does not remove it from Git history.
 
 ### 4. Run the application
 
