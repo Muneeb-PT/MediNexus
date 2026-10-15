@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#071525">
+<meta name="description" content="MediNexus is a JavaFX and MySQL Smart Hospital Management System academic project by Mohammed Muneeb PT.">
+<title>MediNexus | Smart Hospital Management System</title>
+<style>
+:root{color-scheme:dark;--bg:#071525;--panel:#102338;--text:#eef7ff;--muted:#a9bfd0;--mint:#68f0c0;--blue:#72b8ff;--line:rgba(190,220,245,.14)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 75% 0%,#123653 0,transparent 42%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}a{color:inherit;text-decoration:none}.wrap{width:min(1120px,92%);margin:auto}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{display:flex;gap:11px;align-items:center;font-weight:800;letter-spacing:-.5px;font-size:1.15rem}.logo{display:grid;place-items:center;width:39px;height:39px;border-radius:13px;background:linear-gradient(135deg,var(--mint),var(--blue));color:#061626;font-weight:900;font-size:1.35rem}.navlinks{display:flex;gap:25px;color:var(--muted);font-size:.92rem}.navlinks a:hover{color:var(--mint)}.hero{padding:92px 0 78px;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}.eyebrow{display:inline-flex;gap:9px;align-items:center;border:1px solid #285b64;background:#10353d;border-radius:100px;padding:6px 12px;color:var(--mint);font-size:.78rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase}.dot{width:7px;height:7px;background:var(--mint);border-radius:50%}h1{font-size:clamp(2.7rem,6vw,5rem);line-height:1.02;letter-spacing:-.065em;margin:22px 0}h1 span{background:linear-gradient(90deg,var(--mint),var(--blue));background-clip:text;-webkit-background-clip:text;color:transparent}.lead{max-width:610px;color:var(--muted);font-size:1.1rem}.actions{display:flex;flex-wrap:wrap;gap:13px;margin:28px 0}.btn{display:inline-flex;justify-content:center;align-items:center;gap:9px;border-radius:12px;padding:12px 18px;font-weight:750;border:1px solid var(--line);transition:transform .2s,background .2s}.btn:hover{transform:translateY(-2px)}.primary{background:var(--mint);color:#052019;border-color:var(--mint)}.secondary{background:#102338}.hint{font-size:.83rem;color:#91aabd}.mock{border:1px solid #31516b;border-radius:22px;padding:18px;background:linear-gradient(145deg,rgba(24,54,79,.96),rgba(10,27,45,.96));box-shadow:0 28px 80px #0005;transform:rotate(1deg)}.mocktop{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding:4px 0 15px;font-size:.8rem;color:var(--muted)}.status{background:#123f39;color:var(--mint);border-radius:50px;padding:4px 9px}.mock h3{margin:19px 0 12px}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}.stat{padding:15px;border:1px solid var(--line);border-radius:13px;background:#0b1c2c}.stat b{display:block;font-size:1.55rem}.stat small{color:var(--muted)}.chart{margin-top:12px;padding:15px;border:1px solid var(--line);border-radius:13px;background:#0b1c2c}.bars{display:flex;align-items:end;gap:9px;height:75px;margin-top:10px}.bars i{display:block;flex:1;border-radius:5px 5px 2px 2px;background:linear-gradient(var(--mint),#388caa);opacity:.9}.section{padding:68px 0}.sectionhead{max-width:680px;margin-bottom:28px}.kicker{color:var(--mint);font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;font-weight:800}.section h2{font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-.04em;margin:10px 0 13px}.sub{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{padding:23px;border:1px solid var(--line);border-radius:17px;background:linear-gradient(145deg,rgba(16,35,56,.92),rgba(9,25,41,.92))}.icon{width:43px;height:43px;border-radius:13px;background:#173e4b;color:var(--mint);display:grid;place-items:center;font-size:1.25rem;margin-bottom:15px}.card h3{margin:0 0 7px}.card p{margin:0;color:var(--muted);font-size:.94rem}.roles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.role{padding:18px;border-radius:14px;border:1px solid var(--line);background:#0d2032}.role b{display:block;margin-bottom:4px}.role span{color:var(--muted);font-size:.87rem}.tech{display:flex;flex-wrap:wrap;gap:10px}.tag{padding:8px 13px;border:1px solid #2a4b61;border-radius:100px;background:#0e263a;color:#cde2f1;font-size:.9rem}.cta{padding:34px;border:1px solid #2b5b63;border-radius:22px;background:radial-gradient(ellipse at 100% 0%,#16454a,transparent 55%),#0c2132;display:flex;align-items:center;justify-content:space-between;gap:22px}.cta h2{margin:0 0 7px}.cta p{margin:0;color:var(--muted)}footer{margin-top:65px;border-top:1px solid var(--line);padding:25px 0;color:var(--muted);font-size:.88rem;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}.footlinks{display:flex;gap:18px}footer a:hover{color:var(--mint)}
+@media(max-width:800px){.hero{grid-template-columns:1fr;padding:65px 0}.mock{max-width:520px;transform:none}.grid{grid-template-columns:repeat(2,1fr)}.roles{grid-template-columns:repeat(2,1fr)}.navlinks{gap:12px}.navlinks a:nth-child(1),.navlinks a:nth-child(2){display:none}.cta{align-items:flex-start;flex-direction:column}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.navlinks{font-size:.82rem}.hero{padding-top:48px}.section{padding:48px 0}.cta{padding:24px}.stats{gap:8px}}
+</style>
+</head>
+<body>
+<header class="wrap nav">
+<a class="brand" href="#top" aria-label="MediNexus home"><span class="logo">M+</span><span>MediNexus</span></a>
+<nav class="navlinks" aria-label="Main navigation"><a href="#features">Features</a><a href="#roles">User roles</a><a href="#technology">Technology</a><a href="#about">About</a></nav>
+</header>
+<main id="top">
+<section class="wrap hero">
+<div>
+<div class="eyebrow"><span class="dot"></span> Smart Hospital Management System</div>
+<h1>Care workflows,<br><span>connected.</span></h1>
+<p class="lead">MediNexus is a Java desktop application concept designed to bring patient records, appointments, prescriptions and hospital workflows into one organized experience.</p>
+<div class="actions">
+<a class="btn primary" href="https://github.com/Muneeb-PT/MediNexus/releases" target="_blank" rel="noopener">↓ Get the Windows app</a>
+<a class="btn secondary" href="https://github.com/Muneeb-PT/MediNexus" target="_blank" rel="noopener">View source on GitHub ↗</a>
+</div>
+<p class="hint">Academic project · B.Tech CSE · Built with JavaFX and MySQL</p>
+</div>
+<div class="mock" aria-label="Illustrative hospital dashboard preview">
+<div class="mocktop"><span>MEDINEXUS / OVERVIEW</span><span class="status">● UI concept</span></div>
+<h3>Hospital overview</h3>
+<div class="stats"><div class="stat"><small>Patient records</small><b>Organized</b><small>Centralized workflow</small></div><div class="stat"><small>Access control</small><b>Role-based</b><small>Permissions by role</small></div><div class="stat"><small>Appointments</small><b>Priority-aware</b><small>Severity-based concept</small></div><div class="stat"><small>Prescriptions</small><b>Connected</b><small>Medicine workflow</small></div></div>
+<div class="chart"><small>Designed for clearer daily workflows</small><div class="bars" aria-hidden="true"><i style="height:35%"></i><i style="height:55%"></i><i style="height:42%"></i><i style="height:76%"></i><i style="height:61%"></i><i style="height:90%"></i><i style="height:70%"></i><i style="height:100%"></i></div></div>
+</div>
+</section>
+<section class="section" id="features"><div class="wrap">
+<div class="sectionhead"><div class="kicker">What it brings together</div><h2>One system. Essential workflows.</h2><p class="sub">A modular academic project exploring how software can organize common hospital administration tasks.</p></div>
+<div class="grid">
+<article class="card"><div class="icon">♙</div><h3>Patient management</h3><p>Register patient details, validate input and organize patient information for relevant workflows.</p></article>
+<article class="card"><div class="icon">◷</div><h3>Appointments</h3><p>Support appointment workflows and a rule-based concept for emergency, chronic and routine priorities.</p></article>
+<article class="card"><div class="icon">✚</div><h3>Medical records</h3><p>Structure patient, doctor, diagnosis and treatment information in related clinical workflows.</p></article>
+<article class="card"><div class="icon">▤</div><h3>Prescriptions</h3><p>Organize medicine selection, dosage instructions and prescription-related checks.</p></article>
+<article class="card"><div class="icon">▦</div><h3>Medicine inventory</h3><p>Support stock visibility and quantity checks connected to prescription workflows.</p></article>
+<article class="card"><div class="icon">₹</div><h3>Billing workflows</h3><p>Billing and payment management are part of the project scope; specific capabilities depend on implemented modules.</p></article>
+</div>
+</div></section>
+<section class="section" id="roles"><div class="wrap">
+<div class="sectionhead"><div class="kicker">Access by responsibility</div><h2>Designed around user roles.</h2><p class="sub">Role-based authorization is a core design goal. Available operations depend on the current implementation.</p></div>
+<div class="roles"><div class="role"><b>Administrator</b><span>Authorized system administration</span></div><div class="role"><b>Doctor</b><span>Medical records and prescriptions</span></div><div class="role"><b>Receptionist</b><span>Patient registration and appointments</span></div><div class="role"><b>Patient</b><span>Permitted patient-facing functions</span></div></div>
+</div></section>
+<section class="section" id="technology"><div class="wrap">
+<div class="sectionhead"><div class="kicker">Built with</div><h2>Java-first, database-connected.</h2><p class="sub">The project is an installable desktop application—not a browser-based hospital system. This website is its public project landing page.</p></div>
+<div class="tech"><span class="tag">Java</span><span class="tag">JavaFX</span><span class="tag">MySQL</span><span class="tag">JDBC</span><span class="tag">Maven</span><span class="tag">Git & GitHub</span><span class="tag">Object-Oriented Programming</span></div>
+</div></section>
+<section class="section" id="about"><div class="wrap">
+<div class="cta"><div><div class="kicker">Explore the project</div><h2>Want to see how it works?</h2><p>Explore the source code, setup notes and available Windows downloads on GitHub.</p></div><div class="actions"><a class="btn primary" href="https://github.com/Muneeb-PT/MediNexus/releases" target="_blank" rel="noopener">Windows downloads ↗</a><a class="btn secondary" href="https://github.com/Muneeb-PT/MediNexus" target="_blank" rel="noopener">Repository ↗</a></div></div>
+</div></section>
+</main>
+<footer class="wrap"><span>© 2026 MediNexus · Academic project by Mohammed Muneeb PT</span><div class="footlinks"><a href="https://github.com/Muneeb-PT" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/mohammed-muneeb-pt/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/Muneeb-PT/MediNexus/blob/main/README.md" target="_blank" rel="noopener">Documentation</a></div></footer>
+</body>
+</html>
