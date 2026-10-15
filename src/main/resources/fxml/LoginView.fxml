@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -8,69 +9,129 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.effect.ColorAdjust?>
 
 <StackPane xmlns="http://javafx.com/javafx/25"
            xmlns:fx="http://javafx.com/fxml/1"
            fx:controller="com.medinexus.controller.LoginController"
-           stylesheets="@../css/style.css">
+           stylesheets="@../css/style.css"
+           styleClass="login-root">
 
+    <!-- Full-screen campus background -->
+
+    <ImageView fx:id="backgroundImage"
+               fitWidth="1440"
+               fitHeight="900"
+               preserveRatio="false"
+               mouseTransparent="true">
+        <image>
+            <Image url="@../images/bg.png"
+                   backgroundLoading="true"/>
+        </image>
+        <effect>
+            <GaussianBlur radius="9"/>
+        </effect>
+    </ImageView>
+
+
+    <!-- Dark translucent overlay -->
+    <Region styleClass="login-overlay"
+            mouseTransparent="true"/>
+
+    <!-- Main login panel -->
     <VBox alignment="CENTER"
-          spacing="15"
-          maxWidth="380">
+          spacing="17"
+          maxWidth="600"
+          prefWidth="600"
+          styleClass="login-card">
 
-        <ImageView fitHeight="90"
-                   fitWidth="90"
+        <ImageView fitWidth="100"
+                   fitHeight="100"
                    preserveRatio="true">
-
             <image>
                 <Image url="@../images/logo.png"/>
             </image>
-
         </ImageView>
 
-        <Label text="Welcome Back"
-               styleClass="login-title"/>
+        <Label text="MediNexus"
+               styleClass="login-brand"/>
 
-        <Label text="Sign in to MediNexus"
-               styleClass="login-subtitle"/>
+        <Label text="SMART HOSPITAL MANAGEMENT"
+               styleClass="login-eyebrow"/>
 
-        <TextField fx:id="usernameField"
-                   promptText="Username"
-                   prefHeight="45"/>
+        <VBox alignment="CENTER" spacing="5">
+            <Label text="Welcome back"
+                   styleClass="login-title"/>
 
-        <PasswordField fx:id="passwordField"
-                       promptText="Password"
-                       prefHeight="45"/>
+            <Label text="Sign in to continue to your healthcare workspace."
+                   wrapText="true"
+                   styleClass="login-subtitle"/>
+        </VBox>
 
-        <ComboBox fx:id="roleComboBox"
-                  promptText="Select Role"
-                  prefHeight="45"
-                  prefWidth="380"/>
+        <VBox spacing="7" styleClass="login-field-group">
+            <Label text="Username"
+                   styleClass="login-field-label"/>
 
-        <Button text="LOGIN"
-                fx:id="loginButton"
+            <TextField fx:id="usernameField"
+                       promptText="Enter your username"
+                       prefHeight="46"
+                       styleClass="login-input"/>
+        </VBox>
+
+        <VBox spacing="7" styleClass="login-field-group">
+            <Label text="Password"
+                   styleClass="login-field-label"/>
+
+            <PasswordField fx:id="passwordField"
+                           promptText="Enter your password"
+                           prefHeight="46"
+                           styleClass="login-input"/>
+        </VBox>
+
+        <VBox spacing="7" styleClass="login-field-group">
+            <Label text="Sign in as"
+                   styleClass="login-field-label"/>
+
+            <ComboBox fx:id="roleComboBox"
+                      promptText="Select your role"
+                      prefHeight="46"
+                      maxWidth="Infinity"
+                      styleClass="login-input"/>
+        </VBox>
+
+        <Button fx:id="loginButton"
+                text="SIGN IN"
                 onAction="#handleLogin"
-                prefWidth="380"
-                prefHeight="45"
+                prefHeight="48"
+                maxWidth="Infinity"
                 styleClass="login-button"/>
-        <Button text="Create Patient Account"
-                onAction="#handleOpenSignup"
-                style="-fx-background-color: transparent;
-               -fx-text-fill: #2563eb;
-               -fx-font-weight: bold;"/>
-        <Button text="Forgot Password?"
+
+        <HBox alignment="CENTER" spacing="5">
+            <Label text="New to MediNexus?"
+                   styleClass="login-link-caption"/>
+
+            <Button text="Create account"
+                    onAction="#handleOpenSignup"
+                    styleClass="login-text-button"/>
+        </HBox>
+
+        <Button text="Forgot your password?"
                 onAction="#handleForgotPassword"
-                style="-fx-background-color: transparent;
-               -fx-text-fill: #2563eb;
-               -fx-font-weight: bold;"/>
+                styleClass="login-text-button"/>
 
         <Label fx:id="messageLabel"
                text=""
+               wrapText="true"
                styleClass="login-message"/>
 
-        <Label text="MediNexus • Smart Hospital Management System"
-               styleClass="login-footer"/>
+        <VBox alignment="CENTER" spacing="4">
+            <Region styleClass="login-divider"/>
+            <Label text="SECURE ACCESS • SMARTER HEALTHCARE"
+                   styleClass="login-footer"/>
+        </VBox>
 
     </VBox>
 

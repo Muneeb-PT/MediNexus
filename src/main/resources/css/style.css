@@ -6,7 +6,7 @@
 
 .login-subtitle {
     -fx-font-size: 15px;
-    -fx-text-fill: #B8DCE8;
+    -fx-text-fill: #007093;
 }
 
 .login-button {
@@ -49,12 +49,12 @@
 
 .sidebar-subtitle {
     -fx-font-size: 10px;
-    -fx-text-fill: #7FA9B8;
+    -fx-text-fill: #00bbff;
 }
 
 .sidebar-button {
     -fx-background-color: transparent;
-    -fx-text-fill: #D8EDF2;
+    -fx-text-fill: #00d5ff;
     -fx-font-size: 14px;
     -fx-alignment: CENTER_LEFT;
     -fx-pref-height: 42px;

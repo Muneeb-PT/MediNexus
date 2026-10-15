@@ -34,8 +34,7 @@
 
             <TableView fx:id="paymentTable"
                        prefHeight="420"
-                       prefWidth="1050"
-                       columnResizePolicy="CONSTRAINED_RESIZE_POLICY">
+                       prefWidth="1050">
 
                 <columns>
 
