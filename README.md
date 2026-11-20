@@ -2,7 +2,7 @@
 ### Smart Hospital Management System
 
 <p align="center">
-  <strong>A JavaFX desktop application for organizing hospital workflows through a structured, role-aware interface.</strong>
+  <strong>A JavaFX desktop application for managing connected hospital workflows.</strong>
 </p>
 
 <p align="center">
@@ -10,7 +10,7 @@
   <img alt="JavaFX" src="https://img.shields.io/badge/JavaFX-Desktop%20UI-2E75B6">
   <img alt="FXML" src="https://img.shields.io/badge/FXML-UI%20Layouts-6A5ACD">
   <img alt="MySQL" src="https://img.shields.io/badge/MySQL-Database-4479A1">
-  <img alt="Project" src="https://img.shields.io/badge/Type-Academic%20Project-218B82">
+  <img alt="Project" src="https://img.shields.io/badge/Type-OOP%20Mini%20Project-218B82">
 </p>
 
 <p align="center">
@@ -21,108 +21,108 @@
 
 ---
 
-## Overview
+## About the Project
 
-**MediNexus** is a desktop-based **Smart Hospital Management System** developed as an academic software project. It brings common hospital workflows into one application, with the goal of making patient-related information and operational tasks easier to organize.
+**MediNexus** is a **Smart Hospital Management System** developed as a group mini-project for the Object-Oriented Programming (OOP) course during S3 of B.Tech Computer Science and Engineering at KMEA Engineering College.
 
-The application is built with **Java**, **JavaFX**, **FXML**, and **MySQL**. Its design focuses on object-oriented programming, a graphical desktop experience, database-backed information management, and separating functionality according to user roles.
+The idea was to build more than a basic record-keeping application: a desktop system that connects common hospital workflows such as patient management, appointments, medical records, prescriptions, medicine inventory, billing, and role-based access.
 
-MediNexus is intended for learning and demonstration. Features and workflows may evolve as development continues.
+The application is built using **Java, JavaFX, FXML, JDBC, and MySQL**. It gave me an opportunity to apply OOP concepts to a larger application, work with a relational database, design a multi-screen interface, and understand how separate modules fit together.
 
-## Core Technologies
+This is an academic project intended for learning and demonstration, not a certified clinical system.
 
-| Technology | Role in MediNexus |
+## Features and Modules
+
+The repository contains a broad set of application modules, including:
+
+- **Role-based access:** Separate workflows for Administrator, Doctor, Receptionist, and Patient roles.
+- **Patient management:** Patient registration, profile information, and patient records.
+- **Appointment management:** Appointment creation and management, with rule-based priority handling for emergency, chronic, and routine cases.
+- **Medical records:** Store and access patient medical information through role-appropriate workflows.
+- **Prescriptions:** Create and manage prescriptions with medicine and dosage information.
+- **Pharmacy and inventory:** Medicine records, stock management, restocking, inventory alerts, and prescription-related dispensing/billing workflows.
+- **Billing and payments:** Hospital billing, payment records, and receipt/report-related functionality.
+- **Emergency workflows:** Emergency request handling and related vehicle information.
+- **Notifications:** In-app notifications and observer-based notification components.
+- **Identity verification:** A verification workflow with a DigiLocker integration structure; availability depends on configuration and provider setup.
+- **Rule-based assistant:** An in-app helper for navigating common system functions. This is a programmed rule-based assistant, not a generative AI chatbot.
+- **Support and feedback:** Support ticket and feedback workflows.
+
+The exact behaviour of each feature depends on the current implementation and local configuration. Some integrations use demo providers and should not be mistaken for live third-party services.
+
+## User Roles
+
+| Role | Main area |
 |---|---|
-| **Java** | Application logic, domain models, and object-oriented design |
-| **JavaFX** | Desktop user interface and interactive application screens |
-| **FXML** | Declarative layout of JavaFX screens and interface components |
-| **MySQL** | Relational database for persistent application data |
-
-## Key Modules and Goals
-
-### Role-based workflows
-The application is designed around four user roles with different responsibilities:
-
-| Role | Intended area of use |
-|---|---|
-| **Administrator** | Hospital administration and authorized management tasks |
+| **Administrator** | Authorized system administration and management |
 | **Doctor** | Patient care workflows, medical records, and prescriptions |
-| **Receptionist** | Patient registration and appointment-related tasks |
-| **Patient** | Access to permitted patient-facing features |
+| **Receptionist** | Patient registration and appointment handling |
+| **Patient** | Access to permitted patient-facing functions |
 
-Access to individual actions should be controlled according to each role's permissions. The available actions depend on the modules implemented in the current version.
+## Object-Oriented Programming
 
-### Patient management
-- Organize patient details for hospital workflows.
-- Support patient registration and record retrieval where implemented.
-- Validate information entered through the interface.
-
-### Appointment management
-- Support appointment-related workflows between patients and doctors.
-- Organize scheduling information.
-- Include a rule-based concept for prioritizing emergency, chronic, and routine cases where implemented.
-
-### Medical records and prescriptions
-- Organize patient medical information.
-- Support diagnosis and treatment-related record workflows.
-- Provide a structured prescription workflow for medicine, dosage, frequency, duration, and instructions where available.
-
-### Medicine inventory
-- Present medicine information and available quantities.
-- Support stock checks in prescription-related workflows where implemented.
-- Help identify low-stock or unavailable medicines when supported by the current module.
-
-### Billing workflow
-Billing is part of the intended hospital-management scope. The exact operations available depend on the current implementation.
-
-### Rule-based assistant
-The project includes a rule-based assistant concept for guiding users toward common areas such as appointments, prescriptions, medicines, medical records, billing, and general help. It uses programmed rules and keywords; it should not be described as a generative AI system.
-
-## Object-Oriented Design
-
-MediNexus is developed to apply core Object-Oriented Programming (OOP) principles:
+MediNexus was developed as an opportunity to use OOP principles in a practical application:
 
 - **Encapsulation** — keeping data and related operations together while controlling access to object state.
-- **Inheritance** — reusing and extending behavior through class relationships where appropriate.
-- **Polymorphism** — allowing shared interfaces or parent types to support different implementations.
-- **Abstraction** — exposing essential operations while hiding implementation details.
+- **Inheritance** — reusing and extending behaviour through class relationships where appropriate.
+- **Polymorphism** — using shared interfaces and different implementations for related operations.
+- **Abstraction** — exposing essential operations while keeping implementation details separate.
 
-The application also aims to separate interface handling, business rules, and data-related responsibilities to make the code easier to understand and maintain.
+The codebase also uses design patterns and separation of responsibilities in areas such as appointment prioritization, notifications, payment handling, and data access.
 
-## Application Flow
+## Technology Stack
 
-The high-level workflow is:
+| Technology | Purpose |
+|---|---|
+| **Java** | Application logic and OOP implementation |
+| **JavaFX** | Desktop user interface |
+| **FXML** | JavaFX screen layouts |
+| **CSS** | Interface styling |
+| **JDBC** | Java-to-database communication |
+| **MySQL** | Relational database |
+| **Maven** | Dependency and build management |
+| **JUnit 5** | Automated tests |
+
+## Application Architecture
+
+At a high level, the application follows this flow:
 
 ```text
 User
  |
  v
 JavaFX Interface
-(FXML layouts + Java controllers)
+(FXML layouts + Controllers)
  |
  v
-Application Logic
+Service Layer
 (Validation, permissions, workflows)
  |
  v
-Database Operations
+Repository / JDBC Layer
  |
  v
 MySQL Database
 ```
 
-This is a conceptual view of the application flow. The actual class and package structure may change as the project develops.
+The project is organized into packages for configuration, controllers, models, navigation, observers, payments, repositories, services, strategies, utilities, and views.
+
+## Screenshots and Demo
+
+The project website provides a quick overview of MediNexus. For the actual desktop application, check the available screenshots and Windows release files in the repository.
+
+- [Open the project website](https://muneeb-pt.github.io/MediNexus/)
+- [Browse source code](https://github.com/Muneeb-PT/MediNexus)
+- [View Windows releases](https://github.com/Muneeb-PT/MediNexus/releases)
 
 ## Getting Started
 
 ### Requirements
 
-Before running the application, prepare:
-
-- A compatible **JDK** matching the version configured in the project.
-- **MySQL Server**.
-- The MediNexus source code.
-- A Java development environment capable of opening and running the project.
+- A JDK compatible with the version configured in `pom.xml` (currently Java 25).
+- MySQL Server.
+- IntelliJ IDEA or another Java IDE with Maven support.
+- Git, if you want to clone the repository.
 
 ### 1. Clone the repository
 
@@ -133,72 +133,84 @@ cd MediNexus
 
 ### 2. Open the project
 
-Open the downloaded project folder in your Java IDE and allow it to load the project configuration and dependencies.
+Open the folder in your Java IDE and allow Maven to download the configured dependencies.
 
 ### 3. Configure MySQL
 
 1. Start MySQL Server.
-2. Create the `medinexus` database and the tables required by the repository's JDBC queries. **A complete SQL schema/seed script is not currently included**, so a fresh database setup is not yet fully automated.
-3. Configure the connection without committing credentials. The default connection URL targets `127.0.0.1:3307/medinexus`; override it with `MEDINEXUS_DB_URL` if your MySQL port or database name differs.
-4. Set the database password in the environment before launching the application.
+2. Create the `medinexus` database and configure the tables required by the application's JDBC repositories.
+3. The default connection URL targets `127.0.0.1:3307/medinexus`. Set `MEDINEXUS_DB_URL` if your local MySQL configuration is different.
+4. Provide the database username and password through environment variables or supported JVM properties. Do not commit credentials.
 
-**Windows PowerShell (current terminal only):**
+**Windows PowerShell example:**
 
 ```powershell
 $env:MEDINEXUS_DB_PASSWORD = "your-local-mysql-password"
-# Optional if your MySQL username is not root:
 $env:MEDINEXUS_DB_USER = "your-mysql-username"
 ```
 
-The application also accepts the JVM properties `-Dmedinexus.db.password`, `-Dmedinexus.db.user`, and `-Dmedinexus.db.url`. Never commit the actual password to GitHub.
+The application also supports the JVM properties `-Dmedinexus.db.password`, `-Dmedinexus.db.user`, and `-Dmedinexus.db.url`.
 
-> **Important:** Any database password previously committed to a public repository should be considered exposed and rotated. Removing it from the latest source does not remove it from Git history.
+> **Database setup note:** A complete fresh-install SQL schema and seed-data script is not currently provided. You will need to prepare the database schema expected by the application before running it on a new machine.
 
 ### 4. Run the application
 
-Run the configured JavaFX application entry point from your IDE or use the build/run instructions defined by the project configuration. If startup fails, check the IDE output, JDK configuration, JavaFX setup, MySQL service, database connection settings, and required schema.
+Run the JavaFX Maven configuration from your IDE, or use:
 
-## Security and Responsible Use
+```bash
+mvn javafx:run
+```
 
-MediNexus is an academic project and is **not a certified clinical or production hospital system**. Real healthcare use would require thorough security testing and additional safeguards, including secure authentication, strong authorization checks, protected credentials, audit logging, reliable backups, data protection controls, and a review of applicable privacy and healthcare requirements.
+If the application does not start, check the JDK version, Maven dependencies, MySQL service, database URL, credentials, and required tables.
 
-Use only test or appropriately authorized data during development. Do not place real patient information, passwords, or database secrets in this public repository.
+## Project Roadmap
 
-## Project Status
+MediNexus is a project I would like to continue developing beyond the initial OOP mini-project. Possible next improvements include:
 
-MediNexus is under active academic development. Screens, workflows, and capabilities may change as modules are refined. Please refer to the current source code and release notes for the functionality available in a particular version.
+- **Patient photo support:** Add profile photographs and a clear, secure image-storage workflow.
+- **Mobile application:** Develop a companion mobile app for selected patient-facing features such as appointments, notifications, and prescription access.
+- **Pharmacy improvements:** Extend the existing medicine inventory and pharmacy billing modules with more complete workflows and usability improvements.
+- **Deployment and setup:** Make database initialization and installation easier on a fresh computer.
+- **Further testing:** Expand automated tests and validate workflows across all four user roles.
 
-## Academic Context
+These are planned improvements, not claims that the features are already complete.
+
+## Academic Details and Contribution
 
 | Detail | Information |
 |---|---|
 | **Project** | MediNexus — Smart Hospital Management System |
+| **Course** | Object-Oriented Programming (OOP) |
+| **Project type** | Group mini-project |
 | **Programme** | B.Tech Computer Science and Engineering |
 | **Semester** | S3 |
 | **Institution** | KMEA Engineering College |
-| **Academic Year** | 2026–2027 |
+| **Academic year** | 2026–2027 |
+| **Submitted to** | Sajna Saleem |
 
-The project applies Java programming, OOP concepts, JavaFX interface design, and database management to a practical hospital-management scenario.
+MediNexus was submitted as a **group project**. I worked with the group, but I was responsible for the majority of the implementation and integration work—approximately 90% of the development effort by my own estimate. This included building and connecting the main application modules, working on the database layer, and preparing the project for demonstration.
 
-## Author
+## Project Developer
 
 **Mohammed Muneeb PT**
 
-- **GitHub:** [Muneeb-PT](https://github.com/Muneeb-PT)
-- **Project repository:** [MediNexus](https://github.com/Muneeb-PT/MediNexus)
-- **LinkedIn:** [Mohammed Muneeb PT](https://www.linkedin.com/in/mohammed-muneeb-pt/)
+- [GitHub Profile](https://github.com/Muneeb-PT)
+- [LinkedIn](https://www.linkedin.com/in/mohammed-muneeb-pt/)
+- [MediNexus Repository](https://github.com/Muneeb-PT/MediNexus)
 
-## Contributing and Feedback
+## Security and Responsible Use
 
-Suggestions, bug reports, and constructive feedback are welcome. When reporting an issue, include the steps to reproduce it and the relevant error message, while avoiding passwords, private credentials, or personal patient information.
+MediNexus is an academic project and is **not intended for real clinical or production hospital use**. A production healthcare system would require extensive independent security, privacy, reliability, usability, and regulatory review.
+
+Use only test or appropriately authorized data. Never commit real patient information, passwords, API credentials, or database secrets. Any credential that has previously been committed to a public repository should be considered exposed and rotated; removing it from the latest version does not erase it from Git history.
 
 ## License
 
-No license has currently been specified. Unless a license is added to the repository, do not assume that the source code is available for unrestricted reuse or redistribution.
+No license has currently been specified. Unless a license is added, do not assume the source code is available for unrestricted reuse or redistribution.
 
 ---
 
 <p align="center">
   <strong>MediNexus</strong><br>
-  Connecting hospital workflows through structured desktop software.
+  Built as an OOP mini-project, with room to grow.
 </p>
