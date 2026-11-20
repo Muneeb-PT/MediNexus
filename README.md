@@ -186,9 +186,9 @@ These are planned improvements, not claims that the features are already complet
 | **Semester** | S3 |
 | **Institution** | KMEA Engineering College |
 | **Academic year** | 2026–2027 |
-| **Submitted to** | Sajna Saleem |
+| **Submitted to** | Sajina Salim |
 
-MediNexus was submitted as a **group project**. I worked with the group, but I was responsible for the majority of the implementation and integration work—approximately 90% of the development effort by my own estimate. This included building and connecting the main application modules, working on the database layer, and preparing the project for demonstration.
+MediNexus was completed as a group project, with different responsibilities shared among team members. One teammate prepared the PowerPoint presentation, project report, and the initial simple demo skeleton/design. I took that initial concept further by reworking and expanding the skeleton into the application, developing the frontend and backend, integrating the major modules, and preparing the working system. I also created the video presentation. In terms of the overall development and implementation work, my personal estimate is that I handled approximately 90%; this is my estimate of the coding and technical work, not a claim that other team contributions were unimportant.
 
 ## Project Developer
 
